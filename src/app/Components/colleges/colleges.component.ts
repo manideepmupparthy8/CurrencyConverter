@@ -58,7 +58,6 @@ values: any = [
 
 constructor(private breadcrumbService: BreadcrumbService, private router: Router,
             private confirmationService: ConfirmationService, private fb: FormBuilder, private dataService: DataService) {
-                // this.currencyPipeString = currencyPipe.transform(100, "USD");
     this.breadcrumbService.setItems([
         { label: "Colleges", routerLink: "/root/colleges" },
     ]);
