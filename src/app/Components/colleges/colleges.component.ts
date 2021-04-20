@@ -84,11 +84,11 @@ ngOnInit(): void {
      });
     this.dataService.getCurrency().subscribe((data: any) => {
       this.currency = data;
-      this.currencytoINR = data.rates.INR;
-      this.currencytoUSD = data.rates.USD;
+      this.currencytoINR = data.quotes.USDINR;
+      // this.currencytoUSD = data.rates.USD;
       console.log(data);
-      console.log(data.rates.INR);
-      console.log(data.rates.USD);
+      console.log(data.quotes.USDINR);
+      // console.log(data.rates.USD);
     });
 }
 
