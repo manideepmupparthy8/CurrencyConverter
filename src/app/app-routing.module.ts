@@ -6,8 +6,8 @@ import { AppLoginComponent } from "./Components/loginMain/app.login.component";
 import {
     UsermanagementComponent
 } from "./Components/usermanagement/usermanagement.component";
-import { CollegesComponent } from './Components/colleges/colleges.component';
-import { AddcollegesComponent } from './Components/addcolleges/addcolleges.component';
+import { CollegesComponent } from "./Components/colleges/colleges.component";
+import { AddcollegesComponent } from "./Components/addcolleges/addcolleges.component";
 import { EnrolllistComponent } from "./Components/enrolllist/enrolllist.component";
 
 @NgModule({
@@ -26,6 +26,11 @@ import { EnrolllistComponent } from "./Components/enrolllist/enrolllist.componen
                             path: "colleges",
                             component: CollegesComponent,
                         },
+                        {
+                            path: "",
+                            pathMatch: "full",
+                            redirectTo: "colleges"
+                        },
                         { path: "addColleges", component: AddcollegesComponent },
                         { path: "enrolllist", component: EnrolllistComponent },
                         {
@@ -33,7 +38,7 @@ import { EnrolllistComponent } from "./Components/enrolllist/enrolllist.componen
                             component: UsermanagementComponent,
                         },
                     ],
-                }, 
+                },
                 // {path: 'login', component: AppLoginComponent},
                 { path: "**", redirectTo: "/notfound" },
             ],
