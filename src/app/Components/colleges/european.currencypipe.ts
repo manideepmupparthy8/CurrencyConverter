@@ -49,7 +49,7 @@ export class EuropeanCurrency implements PipeTransform {
                 output += "," + result[1];
             }
             // return currencySymbol + output;
-            return currencySymbol + output.slice(0, 5);
+            return currencySymbol + output.slice(0, 9);
         }
 
   }
