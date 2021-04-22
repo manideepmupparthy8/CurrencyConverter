@@ -101,6 +101,7 @@ import { DataService } from "./data.service";
 import { CurrencyPipe } from "@angular/common";
 import { IndianCurrency } from "./Components/colleges/custom.currencypipe";
 import { EuropeanCurrency } from "./Components/colleges/european.currencypipe";
+import { DataPipePipe } from './Components/colleges/data-pipe.pipe';
 // import { MycurrencyPipe } from "./Components/colleges/european.currencypipe";
 // import { PricePipePipe} from "../app/Components/colleges/custom.currencypipe";
 
@@ -199,10 +200,11 @@ import { EuropeanCurrency } from "./Components/colleges/european.currencypipe";
         CollegesComponent,
         AddcollegesComponent,
         EnrolllistComponent,
+        DataPipePipe,
     ],
     providers: [
         // {provide: LocationStrategy, useClass: HashLocationStrategy},
-       MessageService, MenuService, BreadcrumbService, DataService, CurrencyPipe
+       MessageService, MenuService, BreadcrumbService, DataService, CurrencyPipe, DataPipePipe
     ],
     bootstrap: [AppComponent]
 })

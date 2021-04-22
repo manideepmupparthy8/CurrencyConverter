@@ -2,7 +2,7 @@
     <form [formGroup]="searchForm">
         <div>
             <!-- <p-card> -->
-                <!-- <p-panel header="Colleges" [toggleable]="false">
+            <!-- <p-panel header="Colleges" [toggleable]="false">
                     <div class="p-grid p-fluid">
                         <div class="p-col-12 p-md-12 p-sm-12 p-lg-3">
                             <h5 class="first">Item Name</h5>
@@ -26,67 +26,60 @@
                         </div>
                     </div>
                 </p-panel> -->
-                    <p-card>
-                    <div class="p-grid p-fluid">
+            <p-card>
+                <div class="p-grid p-fluid">
                     <div class="p-col-12 p-md-6 p-sm-12 p-lg-4">
                         <h5 class="rec">No.Of Records : {{values.length}}</h5>
                     </div>
                     <div class="p-col-12 p-md-6 p-sm-12 p-lg-6"></div>
-                        <!-- <div class="p-col-12 p-md-6 p-sm-12 p-lg-2 p-xl-1">
+                    <!-- <div class="p-col-12 p-md-6 p-sm-12 p-lg-2 p-xl-1">
                             <h5></h5>
                             <button pButton pRipple type="button" routerLink='/root/addColleges' label="Add" icon="pi pi-plus" class="add"></button>
                         </div> -->
-                    </div>
-                    <!-- <br> -->
-                    <div>
-                        <div style="float: right;margin-top: -50px;margin-bottom: 20px;">
-                            <button [disabled]="disableBtn1" pButton icon="pi pi-rupee" type="button" pTooltip="Indian Rupees" tooltipPosition="top"
-                            (click)="onCurrencyChange()" >INR</button>&nbsp;
-                            <!-- <button [disabled]="disableBtn" pButton icon="pi pi-euro" type="button" pTooltip="Euros" tooltipPosition="top"
+                </div>
+                <!-- <br> -->
+                <div>
+                    <div style="float: right;margin-top: -50px;margin-bottom: 20px;">
+                        <button [disabled]="disableBtn1" pButton icon="pi pi-rupee" type="button"
+                            pTooltip="Indian Rupees" tooltipPosition="top"
+                            (click)="onCurrencyChange()">INR</button>&nbsp;
+                        <!-- <button [disabled]="disableBtn" pButton icon="pi pi-euro" type="button" pTooltip="Euros" tooltipPosition="top"
                             (click)="onClick()" >EUR
                         </button> -->
-                        <button [disabled]="disableBtn" pButton icon="pi pi-dollar" type="button" pTooltip="Dollars" tooltipPosition="top"
-                        (click)="onClick()" >
-                    </button>
-                        </div>
-                        <p-table [columns]="cols" [value]="values" styleClass="p-datatable-gridlines p-datatable-responsive-demo">
-                            <ng-template pTemplate="header" let-columns>
-                                <tr>
-                                    <th *ngFor="let col of columns">
-                                        {{col.header}}
-                                    </th>
-                                </tr>
-                            </ng-template>
-                            <ng-template pTemplate="body" let-rowData let-index="rowIndex"  let-columns="columns">
-                                <tr>
-                                    <td *ngFor="let col of columns">
-                                        {{rowData[col.field1]}}  
-                                        <!-- {{disableBtn1 ? (rowData[col.field2] | indianCurrency) : (rowData[col.field2] | europeanCurrency )}}  -->
-                                        {{disableBtn1 ? (rowData[col.field2] | indianCurrency) : (rowData[col.field2] | currency: 'USD' )}}     
-    
-                                        <!-- {{rowData[col.field2] | europeanCurrency}}  -->
-                                        {{rowData[col.field3]}}                                        
-                                    </td>
-                                </tr>
-                            </ng-template>
-                        </p-table>
+                        <button [disabled]="disableBtn" pButton icon="pi pi-dollar" type="button" pTooltip="Dollars"
+                            tooltipPosition="top" (click)="onClick()">
+                        </button>
                     </div>
-                </p-card>
-                                 <!-- <div *ngIf="col.header === 'Actions'">
-                                            <button [disabled]="disableBtn1" pButton icon="pi pi-rupee" type="button" pTooltip="Indian Rupees" tooltipPosition="top"
-                                            (click)="onCurrencyChange(index)" >INR</button>&nbsp;
-                                            <button [disabled]="disableBtn" pButton icon="pi pi-dollar" type="button" pTooltip="Dollars" tooltipPosition="top"
-                                            (click)="onClick(index)" >
-                                        </button>
-                                        </div> *ngIf="btn === 'Update'" -->
-            <!-- </p-card> -->
+                    <p-table [columns]="cols" [value]="values" selectionMode="single"
+                        styleClass="p-datatable-gridlines p-datatable-responsive-demo">
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th *ngFor="let col of columns">
+                                    {{col.header}}
+                                </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template let-rowIndex="rowIndex" pTemplate="body" let-rowData let-columns="columns">
+                            <tr style="height:30px" [pSelectableRow]="rowData" [ngStyle]="{'height':!clickTd ? '10px' : '70px' }">
+                                <td (click)="tdClick(rowData.itemName)" > {{rowData.itemName | dataPipe}}</td>
+                                <!-- <td>{{rowData.price}}</td> -->
+                                <td> {{disableBtn1 ? (rowData.price | indianCurrency) : (rowData.price |
+                                    currency: 'USD' )}}
+                                </td>
+                                <td> {{rowData.Qty}}
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </p-card>
         </div>
     </form>
 </div>
 <p-confirmDialog [style]="{width: '30vw'}" [baseZIndex]="10000"></p-confirmDialog>
 <p-dialog header="Enroll" [(visible)]="enrollDialog" [style]="{width: '50vw'}">
     <!-- <ng-template pTemplate="header"></ng-template> -->
-    
+
     <!-- <form [formGroup]="enrollForm">
     <div class="p-grid p-fluid">
         <div class="p-col-12 p-md-12 p-sm-12 p-lg-4">

@@ -15,6 +15,7 @@ import { CurrencyPipe } from "@angular/common";
 export class CollegesComponent implements OnInit {
 
   disableBtn = false;
+  clickTd : boolean = false
   searchForm: any;
   countryValues = [
     // { label: "Active", value: "Active" },
@@ -29,6 +30,7 @@ deptValues = [
 ];
 currency: any;
 stateValues = [];
+newString 
 cols = [];
 values: any = [
     {
@@ -37,7 +39,7 @@ values: any = [
       Qty: "1",
     },
     {
-      itemName: "Apple Mac Book Pro",
+      itemName: "Apple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book ProApple Mac Book Pro",
       price: 196544999,
       Qty: "1",
     },
@@ -64,6 +66,8 @@ constructor(private breadcrumbService: BreadcrumbService, private router: Router
 }
 
 ngOnInit(): void {
+  console.log(this.values)
+
     this.cols = [
         { field1: "itemName", header: "Item Name" },
         { field2: "price", header: "Price." },
@@ -90,6 +94,19 @@ ngOnInit(): void {
       console.log(data.quotes.USDINR);
       // console.log(data.rates.USD);
     });
+}
+
+tdClick(value){
+  if(value.length > 55){
+  console.log(this.clickTd);
+  this.clickTd=true
+  this.newString= value.slice(0,55)
+  }
+  else{
+    this.clickTd=false
+    this.newString=value.slice(0,value.length)
+  }
+  
 }
 
 enroll(){
